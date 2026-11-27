@@ -93,26 +93,6 @@ export const informationDetailPhotos: Partial<Record<string, ServiceStockPhoto>>
 
 export const contactFormPhoto = editorial(31306158);
 
-export const homePhotos = {
-  intro: editorial(7781262),
-  assistance: editorial(5209221),
-  directory: {
-    car: unsplash("plateau-voiture-ville", "Voiture installée sur un plateau de remorquage", "Q7shv9IN7cc"),
-    tyre: editorial(31097241),
-    emergency: editorial(19151967),
-    vanRepair: editorial(3513803),
-    van: editorial(12700835),
-    motorcycle: editorial(9182747),
-    longDistance: editorial(5410923),
-  },
-  gallery: {
-    car: unsplash("sportive-sur-plateau", "Voiture de sport rouge chargée sur un plateau", "6Ti54s2NPgM"),
-    tyre: editorial(3807695),
-    battery: editorial(6473244),
-    longDistance: editorial(40650628),
-  },
-};
-
 export const footerPhotos: Readonly<Record<string, ServiceStockPhoto>> = {
   home: unsplash("depanneuse-rouge", "Dépanneuse rouge stationnée en extérieur", "q6nx3xFYw3E"),
   "not-found": editorial(5566441),

@@ -4,7 +4,6 @@ import { business } from "../lib/business";
 import PageExtras from "./page-extras";
 import PageFrame from "./page-frame";
 import ServiceMarquee from "./service-marquee";
-import { homePhotos, type ServiceStockPhoto } from "../lib/service-photos";
 import { commonFaq } from "../lib/content";
 import { meta, Schema } from "../lib/seo";
 import { Actions, FaqShowcase, link, media, Visual } from "./ui";
@@ -23,30 +22,29 @@ const serviceFacts = [
   { Icon: Truck, value: "4 types", label: "Voiture, moto, utilitaire, poids lourd" },
   { Icon: Route, value: "Sur devis", label: "Transport longue distance" },
 ];
-const photoName = (photo: ServiceStockPhoto) => "services/" + photo.file;
 
 const serviceGallery = [
-  { slug: "remorquage-voiture", title: "Remorquage voiture", Icon: Truck, image: photoName(homePhotos.gallery.car), description: "Faites transférer votre voiture immobilisée vers une destination convenue." },
-  { slug: "depannage-pneu-creve", title: "Assistance pneus", Icon: CircleDot, image: photoName(homePhotos.gallery.tyre), description: "Décrivez la crevaison et indiquez si vous avez une roue de secours." },
-  { slug: "depannage-batterie", title: "Dépannage batterie", Icon: BatteryCharging, image: photoName(homePhotos.gallery.battery), description: "ALF évalue les possibilités d’aide au démarrage selon le véhicule." },
-  { slug: "transport-vehicule-longue-distance", title: "Transport longue distance", Icon: Route, image: photoName(homePhotos.gallery.longDistance), description: "Organisez l’enlèvement et la livraison de votre véhicule sur devis." },
-  { slug: "remorquage-utilitaire", title: "Remorquage utilitaire", Icon: Truck, image: "service-utilitaire-preview", description: "Précisez le gabarit et le chargement de votre fourgon avant la prise en charge." },
-  { slug: "remorquage-moto", title: "Remorquage moto", Icon: Bike, image: "service-moto-preview", description: "Préparez le transfert d’une moto immobilisée vers un atelier." },
+  { slug: "remorquage-voiture", title: "Remorquage voiture", Icon: Truck, image: "client/berline-sur-plateau", description: "Faites transférer votre voiture immobilisée vers une destination convenue." },
+  { slug: "depannage-pneu-creve", title: "Assistance pneus", Icon: CircleDot, image: "client/service-pneu", description: "Décrivez la crevaison et indiquez si vous avez une roue de secours." },
+  { slug: "depannage-batterie", title: "Dépannage batterie", Icon: BatteryCharging, image: "client/service-batterie", description: "ALF évalue les possibilités d’aide au démarrage selon le véhicule." },
+  { slug: "transport-vehicule-longue-distance", title: "Transport longue distance", Icon: Route, image: "client/service-longue-distance", description: "Organisez l’enlèvement et la livraison de votre véhicule sur devis." },
+  { slug: "remorquage-utilitaire", title: "Remorquage utilitaire", Icon: Truck, image: "client/camion-frigorifique", description: "Précisez le gabarit et le chargement de votre fourgon avant la prise en charge." },
+  { slug: "remorquage-moto", title: "Remorquage moto", Icon: Bike, image: "client/moto-sur-plateau", description: "Préparez le transfert d’une moto immobilisée vers un atelier." },
 ];
 const transportComparison = [
   { title: "Remorquage d’urgence", href: "/remorquage-creteil/", action: "Remorquage à Créteil", items: ["Pour un véhicule immobilisé par une panne ou une crevaison.", "Ligne d’assistance ouverte 24h/24 et 7j/7.", "Indiquez votre position, l’état du véhicule et si les roues tournent.", "Convenez du lieu de dépôt avant le transfert."] },
   { title: "Transport planifié", href: "/transport-vehicule-longue-distance/", action: "Transport longue distance", items: ["Pour un enlèvement et une livraison à organiser à l’avance.", "Communiquez les deux adresses et les dates souhaitées.", "Précisez si le véhicule roule et qui remettra les clés.", "Prestation sur devis, selon le trajet et l’accès."] },
 ];
 const towingDirectory = [
-  { slug: "remorquage-voiture", title: "Remorquage de voiture", image: photoName(homePhotos.directory.car) },
-  { slug: "depannage-pneu-creve", title: "Assistance pneu crevé", image: photoName(homePhotos.directory.tyre), description: "Indiquez la roue concernée et si vous avez une roue de secours." },
-  { slug: "remorquage-creteil", title: "Remorquage d’urgence", image: photoName(homePhotos.directory.emergency) },
-  { slug: "depannage-utilitaire", title: "Dépannage utilitaire", image: photoName(homePhotos.directory.vanRepair) },
-  { slug: "depannage-batterie", title: "Dépannage batterie", image: "service-batterie-preview" },
-  { slug: "remorquage-utilitaire", title: "Remorquage utilitaire", image: photoName(homePhotos.directory.van) },
-  { slug: "remorquage-moto", title: "Remorquage moto", image: photoName(homePhotos.directory.motorcycle) },
-  { slug: "transport-vehicule-longue-distance", title: "Transport longue distance", image: photoName(homePhotos.directory.longDistance) },
-  { slug: "remorquage-poids-lourd", title: "Remorquage poids lourd", image: "service-poids-lourd-preview" },
+  { slug: "remorquage-voiture", title: "Remorquage de voiture", image: "client/mercedes-glc" },
+  { slug: "depannage-pneu-creve", title: "Assistance pneu crevé", image: "client/service-pneu", description: "Indiquez la roue concernée et si vous avez une roue de secours." },
+  { slug: "remorquage-creteil", title: "Remorquage d’urgence", image: "client/depannage-en-ville" },
+  { slug: "depannage-utilitaire", title: "Dépannage utilitaire", image: "client/depanneuses-en-parc" },
+  { slug: "depannage-batterie", title: "Dépannage batterie", image: "client/service-batterie" },
+  { slug: "remorquage-utilitaire", title: "Remorquage utilitaire", image: "client/camion-frigorifique" },
+  { slug: "remorquage-moto", title: "Remorquage moto", image: "client/moto-sur-plateau" },
+  { slug: "transport-vehicule-longue-distance", title: "Transport longue distance", image: "client/porte-voitures-lohr" },
+  { slug: "remorquage-poids-lourd", title: "Remorquage poids lourd", image: "client/camion-frigorifique" },
   { slug: "enlevement-epave-gratuit", title: "Enlèvement d’épave gratuit", image: "client/depanneuses-mercedes", description: "ALF enlève gratuitement les voitures dont vous souhaitez vous séparer, y compris les véhicules en fin de vie." },
 ];
 
@@ -54,9 +52,8 @@ export default function Home() {
   return <PageFrame slug="home">
     <Schema/>
     <section className="hero cinematic-hero">
-      <Image className="hero-backdrop" src={media("hero-depannage-creteil.webp") ? "/images/hero-depannage-creteil.webp" : "/images/hero-remorquage-nuit-preview.webp"} alt="" fill preload sizes="100vw"/>
+      <Image className="home-hero-photo" src="/images/client/service-remorquage.webp" alt="Technicien près d’une berline blanche sur une dépanneuse jaune" width={1600} height={900} preload sizes="100vw"/>
       <div className="wrap hero-stage">
-        <div className="hero-wordmark" aria-hidden="true">ALF REMORQUAGE</div>
         <div className="hero-copy">
           <p className="eyebrow"><Clock3 aria-hidden="true"/> ASSISTANCE {business.availability.toUpperCase()}</p>
           <h1 className="hero-heading">
@@ -73,7 +70,7 @@ export default function Home() {
       <div className="towing-intro-grid">
         <div className="towing-intro-side">
           <a className="towing-intro-card" href="/remorquage-creteil/">
-            <Visual name={photoName(homePhotos.intro)}/>
+            <Visual name={"client/depanneuses-mercedes"}/>
             <div><h3>Remorquage 24h/24 à Créteil</h3><p>Pour une voiture immobilisée, indiquez le lieu de prise en charge et la destination souhaitée.</p></div>
           </a>
           <a className="button towing-intro-phone" href={business.tel}><Phone aria-hidden="true"/>{business.phone}</a>
@@ -84,7 +81,7 @@ export default function Home() {
             <div><span className="towing-intro-status"><Clock3 aria-hidden="true"/> {business.availability}</span><p>Une panne à Créteil ou dans le 94 ? Appelez ALF avec le modèle du véhicule et les symptômes. L’équipe vérifie si une intervention sur place est possible.</p></div>
             <p>ALF étudie aussi le transfert de voitures, motos, utilitaires et poids lourds. Pour un enlèvement sur longue distance, préparez les adresses de départ et d’arrivée afin de demander un devis.</p>
           </div>
-          <Image className="towing-intro-wide" src="/images/remorquage-rue-preview.webp" alt="Illustration d’une dépanneuse rouge transportant une voiture en ville" width={1260} height={560} sizes="(max-width: 760px) 100vw, 66vw"/>
+          <Image className="towing-intro-wide" src="/images/client/berline-sur-plateau.webp" alt="Berline blanche sur le plateau d’une dépanneuse jaune" width={1448} height={1086} sizes="(max-width: 760px) 100vw, 66vw"/>
         </div>
       </div>
     </div></section>
@@ -113,8 +110,8 @@ export default function Home() {
     <section className="wrap section assistance" aria-labelledby="assistance-title">
       <div className="assistance-heading"><div><p className="eyebrow">Pourquoi choisir ALF ?</p><h2 id="assistance-title">L’assistance routière quand vous en avez besoin</h2></div><a className="button primary" href={business.tel}><Phone aria-hidden="true"/>{business.phone}</a></div>
       <div className="assistance-layout">
-        <article className="assistance-main"><div className="assistance-card-icon"><Truck aria-hidden="true"/></div><h3>Dépannage ou remorquage selon la panne</h3><p>ALF vérifie si le véhicule peut repartir après une intervention sur place ou s’il doit être transféré.</p><Visual name={photoName(homePhotos.assistance)} alt={homePhotos.assistance.alt}/></article>
-        <article className="assistance-call"><div className="assistance-card-icon"><Clock3 aria-hidden="true"/></div><h3>Un interlocuteur 24h/24</h3><p>Appelez de jour comme de nuit avec votre position et les symptômes de la panne.</p><Visual name="assistance-pneu-preview" alt="Illustration d’une assistance pneu sous la pluie"/></article>
+        <article className="assistance-main"><div className="assistance-card-icon"><Truck aria-hidden="true"/></div><h3>Dépannage ou remorquage selon la panne</h3><p>ALF vérifie si le véhicule peut repartir après une intervention sur place ou s’il doit être transféré.</p><Visual name="client/mercedes-glc" alt="Mercedes GLC noire chargée sur un plateau"/></article>
+        <article className="assistance-call"><div className="assistance-card-icon"><Clock3 aria-hidden="true"/></div><h3>Un interlocuteur 24h/24</h3><p>Appelez de jour comme de nuit avec votre position et les symptômes de la panne.</p><Visual name="client/service-pneu" alt="Technicien remplaçant une roue de voiture"/></article>
         <article><div className="assistance-card-icon"><MapPin aria-hidden="true"/></div><h3>Une base à Créteil</h3><p>Le Val-de-Marne est notre secteur prioritaire d’intervention.</p></article>
         <article><div className="assistance-card-icon"><Route aria-hidden="true"/></div><h3>Un transfert préparé avec vous</h3><p>Précisez l’accès au véhicule et le lieu de dépôt souhaité.</p></article>
         <article className="assistance-vehicles"><div><ShieldAlert aria-hidden="true"/><h3>Voitures, motos, utilitaires et poids lourds</h3></div><p>La prise en charge dépend du véhicule et des conditions d’accès.</p></article>
@@ -133,7 +130,7 @@ export default function Home() {
     <section className="wrap section transport-comparison" aria-labelledby="transport-comparison-title">
       <div className="gallery-heading"><p className="eyebrow">Urgence ou réservation</p><h2 id="transport-comparison-title">Remorquage d’urgence ou transport planifié ?</h2></div>
       <div className="comparison-layout">
-        <div className="comparison-photo"><Visual name="comparatif-assistance-preview" alt="Illustration d’un technicien près d’une roue, avec une dépanneuse en arrière-plan"/></div>
+        <div className="comparison-photo"><Visual name="client/porte-voitures-rue" alt="Camion porte-voitures stationné dans une rue"/></div>
         <div className="comparison-panel">
           <div className="comparison-options">{transportComparison.map(({ title, href, action, items }) => <article key={href}>
             <h3>{title}</h3>
