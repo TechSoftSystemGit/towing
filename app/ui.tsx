@@ -30,7 +30,7 @@ export function Brand({ priority = false }: { priority?: boolean }) {
   const official = media("logo-alf.webp");
   return <a className={"brand " + (official ? "brand-official" : "brand-crest")} href="/" aria-label={business.name}>
     {official
-      ? <Image width={170} height={54} src="/images/logo-alf.webp" alt="" preload={priority}/>
+      ? <Image width={1024} height={1024} src="/images/logo-alf.webp" alt="" sizes="(max-width: 760px) 52px, 92px" preload={priority}/>
       : <><Image width={447} height={480} src="/images/logo-alf-crest.webp" alt="" sizes="(max-width: 760px) 54px, 92px" preload={priority}/><span>DÉPANNAGE<br/>REMORQUAGE</span></>}
   </a>;
 }

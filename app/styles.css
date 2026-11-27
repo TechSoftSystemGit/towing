@@ -54,6 +54,7 @@ header { background: var(--bg-primary); border-bottom: 1px solid var(--border-su
 .brand span { font-size: .72rem; font-weight: 850; letter-spacing: .07em; line-height: 1.2; border-left: 1px solid currentColor; padding-left: .55rem; }
 .brand img { object-fit: contain; width: min(100%, 170px); height: auto; }
 .brand-crest img { width: 58px; height: auto; flex: none; }
+.brand-official img { width: 92px; height: auto; border-radius: .4rem; }
 .desktop-nav { display: flex; align-items: center; gap: clamp(.7rem, 2.4vw, 2.1rem); font-weight: 650; font-size: .94rem; }
 .desktop-nav a { text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
 .desktop-nav a:hover { text-decoration: underline; }
@@ -136,7 +137,7 @@ header { background: var(--bg-primary); border-bottom: 1px solid var(--border-su
   .header .brand { min-width: 0; justify-self: start; }
   .header .brand span { font-size: clamp(.58rem, 1.8vw, .72rem); }
   .header .brand-crest img { width: clamp(43px, 12vw, 54px); }
-  .header .brand-official img { max-height: 52px; }
+  .header .brand-official img { width: 52px; }
   .header-language summary { padding-inline: .45rem; }
   .header-language summary img { width: 23px; height: 17px; }
 }
