@@ -529,21 +529,28 @@ body > header :focus-visible { outline-color: var(--brand-red-hover); }
 .cinematic-hero { isolation: isolate; overflow: hidden; background: var(--bg-dark); }
 .hero-backdrop { z-index: -3; object-fit: cover; object-position: center 55%; }
 .cinematic-hero::after { content: ""; position: absolute; inset: 0; z-index: -2; background: linear-gradient(0deg, var(--bg-dark) 0%, rgb(24 24 27 / 86%) 30%, rgb(24 24 27 / 6%) 68%, rgb(24 24 27 / 44%) 100%); pointer-events: none; }
-.hero-stage { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(15rem, 21rem); gap: 2rem; align-items: end; min-height: var(--hero-min-height); padding-block: clamp(11rem, 22vw, 19rem) var(--section-space); }
+.hero-stage { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(15rem, 21rem); gap: 2rem; align-items: start; min-height: var(--hero-min-height); padding-block: clamp(7rem, 16vw, 14rem) var(--section-space); }
 .hero-wordmark { position: absolute; z-index: -1; inset: 0 0 auto; color: rgb(255 255 255 / 22%); font-size: clamp(2rem, 8.7vw, 8rem); font-weight: 900; letter-spacing: -.07em; line-height: 1.1; white-space: nowrap; }
-.cinematic-hero h1 { max-width: 15ch; font-size: clamp(2.5rem, 5.75vw, 6rem); }
-@media (prefers-reduced-motion: no-preference) {
-  .hero-heading > span { display: inline-block; }
-  .hero-heading > * {
-    animation: hero-heading-reveal .75s cubic-bezier(.2, .7, .25, 1) both;
-  }
-  .hero-heading > :nth-child(2) { animation-delay: .10s; }
-  .hero-heading > :nth-child(3) { animation-delay: .22s; }
-  .hero-heading > em { animation-delay: .36s; }
+.cinematic-hero h1 {
+  --hero-heading-accent: #ff8980;
+  max-width: 15ch;
+  font-size: clamp(2.85rem, 7vw, 7.25rem);
+  line-height: .98;
+  letter-spacing: -.025em;
 }
-@keyframes hero-heading-reveal {
-  from { opacity: .3; clip-path: inset(0 0 65%); transform: translateY(.42em); }
-  to { opacity: 1; clip-path: inset(0 0 -12%); transform: translateY(0); }
+.hero-heading > span { display: inline-block; max-width: 100%; }
+.hero-heading > em { color: var(--hero-heading-accent); font-style: italic; }
+.cinematic-hero .hero-copy > .hero-heading + p { margin-top: .75rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-heading > span {
+    animation: hero-heading-color 3s ease-in-out 2 alternate;
+  }
+  .hero-heading > :nth-child(2) { animation-delay: .15s; }
+  .hero-heading > :nth-child(3) { animation-delay: .3s; }
+}
+@keyframes hero-heading-color {
+  from { color: var(--bg-primary); }
+  to { color: var(--hero-heading-accent); }
 }
 .cinematic-hero .hero-copy > .eyebrow { font-size: .875rem; margin-bottom: .8rem; }
 .cinematic-hero .hero-copy > p:last-child { margin-bottom: 0; }
@@ -586,7 +593,7 @@ body > header :focus-visible { outline-color: var(--brand-red-hover); }
 .towing-directory-call strong { font-size: clamp(1rem, 2vw, 1.5rem); }
 .towing-directory-call svg { color: var(--brand-red-light); }
 @media (max-width: 760px) {
-  .hero-stage { grid-template-columns: 1fr; gap: 1rem; min-height: 0; padding-block: clamp(10rem, 33vw, 17rem) 1.4rem; }
+  .hero-stage { grid-template-columns: 1fr; gap: 1rem; min-height: 0; padding-block: clamp(8rem, 26vw, 13rem) 1.4rem; }
   .hero-backdrop { object-position: center top; max-height: 21rem; }
   .cinematic-hero::after { background: linear-gradient(180deg, rgb(24 24 27 / 25%), rgb(24 24 27 / 6%) 7rem, var(--bg-dark) 21rem); }
   .hero-wordmark { top: .65rem; }
