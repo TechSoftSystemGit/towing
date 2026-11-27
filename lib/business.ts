@@ -1,7 +1,7 @@
 const international = (number: string) => number.replace(/\D/g, "").replace(/^00/, "").replace(/^0/, "33");
 const phone = process.env.BUSINESS_PHONE || "0149803084";
 const digits = international(phone);
-const whatsapp = international(process.env.BUSINESS_WHATSAPP || "");
+const whatsapp = international(process.env.BUSINESS_WHATSAPP ?? "+33664384482");
 const origin = process.env.SITE_URL ? new URL(process.env.SITE_URL).origin : "";
 
 export const business = {
