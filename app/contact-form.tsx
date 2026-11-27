@@ -35,9 +35,32 @@ function FormField({ field }: { field: Field }) {
   </label>;
 }
 
-export default function ContactForm({ email, whatsapp, telephone }: { email: string; whatsapp: string; telephone: string }) {
+export default function ContactForm({ email, whatsapp, telephone, smtpEnabled }: { email: string; whatsapp: string; telephone: string; smtpEnabled: boolean }) {
   const [summary, setSummary] = useState("");
   const [status, setStatus] = useState("");
+  const [replyTo, setReplyTo] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  async function send() {
+    setSending(true);
+    setStatus("");
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ summary, replyTo }),
+      });
+      if (!response.ok) throw new Error("Contact submission failed");
+      setSent(true);
+      setStatus("Votre demande a été envoyée.");
+    } catch {
+      setStatus("L’envoi a échoué. Réessayez ou appelez-nous directement.");
+    } finally {
+      setSending(false);
+    }
+  }
+
   function prepare(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
@@ -49,18 +72,21 @@ export default function ContactForm({ email, whatsapp, telephone }: { email: str
       return;
     }
     const summaryFields = [...fields, ...optionalDetails, { id: "message", label: "Message" }];
+    setReplyTo(String(data.get("email") || "").trim());
+    setSent(false);
     setSummary(summaryFields.map(({ id, label }) => [label, String(data.get(id) || "").trim()]).filter(([,value]) => value).map(([label,value]) => label + " : " + value).join("\n"));
     setStatus("Votre récapitulatif est prêt.");
   }
   return <div className="contact-form"><h3>Préparer ma demande</h3><p>Pour une intervention urgente, <a href={telephone}>appelez-nous directement</a>. Le formulaire vous aide à rassembler les détails.</p>
     <noscript><p>Activez JavaScript pour préparer un récapitulatif, ou appelez ALF directement.</p></noscript>
-    <form method="post" lang="fr" onSubmit={prepare} onChange={() => { setSummary(""); setStatus(""); }}>
+    <form method="post" lang="fr" onSubmit={prepare} onChange={() => { setSummary(""); setStatus(""); }} inert={sending}>
       <div className="form-grid">{fields.map(field => <FormField key={field.id} field={field}/>)}</div>
       <label>Message<textarea name="message" placeholder="Décrivez la panne ou la demande" rows={4} maxLength={1000}/></label>
       <details className="form-details"><summary>Immatriculation et destination (facultatif)</summary><div className="form-grid">{optionalDetails.map(field => <FormField key={field.id} field={field}/>)}</div></details>
       <button className="button primary" type="submit">Préparer ma demande</button>
     </form>
     <p role="status">{status}</p>
+    {summary && smtpEnabled && <button className="button primary" type="button" onClick={send} disabled={sending || sent}>{sending ? "Envoi en cours…" : "Envoyer ma demande"}</button>}
     {summary && <div className="summary"><h3>Récapitulatif</h3><pre>{summary}</pre><div className="actions">{email && <a className="button secondary" href={"mailto:" + email + "?subject=Demande%20d’assistance%20ALF&body=" + encodeURIComponent(summary)}>Ouvrir ma messagerie</a>}{whatsapp && <a className="button secondary" href={whatsapp.split("?")[0] + "?text=" + encodeURIComponent(summary)}>Ouvrir WhatsApp</a>}<button className="button secondary" onClick={async () => { try { await navigator.clipboard.writeText(summary); setStatus("Récapitulatif copié."); } catch { setStatus("La copie automatique est indisponible. Sélectionnez le texte du récapitulatif pour le copier."); } }}>Copier le récapitulatif</button></div></div>}
   </div>;
 }

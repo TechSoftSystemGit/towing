@@ -18,7 +18,7 @@ export const business = {
   whatsapp: /^[1-9]\d{7,14}$/.test(whatsapp)
     ? "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent("Bonjour ALF Dépannage, j’ai besoin d’une assistance pour mon véhicule.")
     : "",
-  email: process.env.BUSINESS_EMAIL || "",
+  email: process.env.BUSINESS_EMAIL ?? "info@depannage-remorquage-alf.com",
   address: process.env.BUSINESS_ADDRESS || "",
   origin,
   indexable: Boolean(origin && process.env.SITE_INDEXABLE === "true"),

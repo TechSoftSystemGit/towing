@@ -12,7 +12,8 @@ export default function ContactSection() {
       <h2 id="contact-section-title">Assistance et remorquage 24h/24</h2>
     </div>
     <div className="contact-section-grid">
-      <ContactForm email={business.email} whatsapp={business.whatsapp} telephone={business.tel}/>
+      <ContactForm email={business.email} whatsapp={business.whatsapp} telephone={business.tel}
+        smtpEnabled={Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASSWORD)}/>
       <figure className="contact-section-photo">
         <div className="contact-section-image">
           <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 760px) 100vw, 48vw"/>

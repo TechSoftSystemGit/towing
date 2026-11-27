@@ -19,7 +19,7 @@ Commit the project and lockfile to the intended GitHub repository. In the Hostin
 
 For any preview leave `SITE_INDEXABLE=false`. The preview allows crawlers to read the HTML noindex directives and returns an empty sitemap. Use Hostinger authentication if private access is required. Once the approved production domain and business disclosures are ready, set `SITE_URL` to the HTTPS origin and `SITE_INDEXABLE=true`, then rebuild. Check the HTML canonical, robots, XML sitemap and telephone action using the deployed hostname.
 
-The contact form prepares a summary in the browser. Once configured, its WhatsApp and email buttons open the visitor's own messaging apps with the summary prefilled. The visitor sends it there. The form has no server-side submission, storage or analytics. Update the privacy text for any new processing or third-party services.
+The contact form prepares a summary in the browser. Set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, and `SMTP_PASSWORD` in the build and runtime environment to enable direct email delivery from the form to the SMTP mailbox. Titan uses `smtp.titan.email` on port 465 with TLS or port 587 with STARTTLS. Set `BUSINESS_EMAIL` to display the public contact email and enable the prefilled email link. The WhatsApp and email links open the visitor's own messaging apps.
 
 The language menu loads static French-to-language dictionaries from `public/translations/` and remembers the visitor's selection on this device. Update these dictionaries when visible French copy changes. Form values and the prepared dispatch summary stay as entered and are excluded from translation.
 
