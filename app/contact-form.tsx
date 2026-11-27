@@ -35,7 +35,7 @@ function FormField({ field }: { field: Field }) {
   </label>;
 }
 
-export default function ContactForm({ email, whatsapp, telephone, smtpEnabled }: { email: string; whatsapp: string; telephone: string; smtpEnabled: boolean }) {
+export default function ContactForm({ whatsapp, telephone, smtpEnabled }: { whatsapp: string; telephone: string; smtpEnabled: boolean }) {
   const [summary, setSummary] = useState("");
   const [status, setStatus] = useState("");
   const [replyTo, setReplyTo] = useState("");
@@ -86,7 +86,10 @@ export default function ContactForm({ email, whatsapp, telephone, smtpEnabled }:
       <button className="button primary" type="submit">Préparer ma demande</button>
     </form>
     <p role="status">{status}</p>
-    {summary && smtpEnabled && <button className="button primary" type="button" onClick={send} disabled={sending || sent}>{sending ? "Envoi en cours…" : "Envoyer ma demande"}</button>}
-    {summary && <div className="summary"><h3>Récapitulatif</h3><pre>{summary}</pre><div className="actions">{email && <a className="button secondary" href={"mailto:" + email + "?subject=Demande%20d’assistance%20ALF&body=" + encodeURIComponent(summary)}>Ouvrir ma messagerie</a>}{whatsapp && <a className="button secondary" href={whatsapp.split("?")[0] + "?text=" + encodeURIComponent(summary)}>Ouvrir WhatsApp</a>}<button className="button secondary" onClick={async () => { try { await navigator.clipboard.writeText(summary); setStatus("Récapitulatif copié."); } catch { setStatus("La copie automatique est indisponible. Sélectionnez le texte du récapitulatif pour le copier."); } }}>Copier le récapitulatif</button></div></div>}
+    {summary && <div className="summary"><h3>Récapitulatif</h3><pre>{summary}</pre><div className="actions">
+      {smtpEnabled && <button className="button primary" type="button" onClick={send} disabled={sending || sent}>{sending ? "Envoi en cours…" : "Envoyer ma demande"}</button>}
+      {whatsapp && <a className="button secondary" href={whatsapp.split("?")[0] + "?text=" + encodeURIComponent(summary)}>Ouvrir WhatsApp</a>}
+      <button className="button secondary" onClick={async () => { try { await navigator.clipboard.writeText(summary); setStatus("Récapitulatif copié."); } catch { setStatus("La copie automatique est indisponible. Sélectionnez le texte du récapitulatif pour le copier."); } }}>Copier le récapitulatif</button>
+    </div></div>}
   </div>;
 }
