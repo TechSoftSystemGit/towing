@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Check, CircleHelp, ClipboardList, MapPin, Phone, Route, Wrench } from "lucide-react";
 import { business } from "../lib/business";
 import { pageExtras } from "../lib/page-extras";
-import { informationDetailPhotos, servicePhotos, servicePhotoSrc } from "../lib/service-photos";
+import { clientDetailPhoto } from "../lib/client-photos";
 import { link } from "./ui";
 import "./page-extras.css";
 
@@ -15,20 +15,19 @@ const icons = {
 };
 
 export default function PageExtras({ slug }: { slug: string }) {
-  const [photoLayout, cardLayout, photo, photoTitle, intro, cardsTitle, ...cards] = pageExtras[slug];
-  const stock = servicePhotos[slug]?.detail || informationDetailPhotos[slug];
+  const [photoLayout, cardLayout, photoTitle, intro, cardsTitle, ...cards] = pageExtras[slug];
+  const photo = clientDetailPhoto(slug);
   const Icon = icons[cardLayout];
-  const cutout = !stock && (photo === "technicien-assistance-preview" || photo === "hero-cab-over-preview");
   const imageSizes = photoLayout === "banner" || photoLayout === "stack"
     ? "100vw"
     : "(max-width: 760px) 100vw, 55vw";
 
   return <>
-    <section className="extras-photo" data-photo-layout={photoLayout} aria-labelledby="extra-photo-title">
+    <section className={slug === "home" ? "extras-photo home-towing-banner" : "extras-photo"} data-photo-layout={photoLayout} aria-labelledby="extra-photo-title">
       <div className="wrap extras-photo-inner">
         <div className="extras-photo-copy"><h2 id="extra-photo-title">{photoTitle}</h2><p>{intro}</p></div>
-        <div className="extras-image" data-cutout={cutout || undefined}>
-          <Image src={stock ? servicePhotoSrc(stock) : "/images/" + photo + ".webp"} alt={stock?.alt || ""} fill sizes={imageSizes}/>
+        <div className="extras-image">
+          <Image src={photo.src} alt={photo.alt} fill sizes={imageSizes}/>
         </div>
       </div>
     </section>

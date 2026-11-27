@@ -33,7 +33,7 @@ export default async function Detail(props: Props) {
   const page = await getPage(props);
   const service = services.includes(page);
   const scrapRemoval = page.slug === "enlevement-epave-gratuit";
-  return <PageFrame slug={page.slug}>
+  return <PageFrame>
     <Schema page={page}/>
     <PageHero slug={page.slug} officialName={page.image} officialAlt={page.alt}>
       <nav className="crumb" aria-label="Fil d’Ariane"><a href="/">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">{page.label}</span></nav>
@@ -55,7 +55,7 @@ export default async function Detail(props: Props) {
     {page.slug === "depannage-remorquage" && <section className="service-gallery" aria-labelledby="recovery-photos-title"><div className="wrap section">
       <header className="gallery-heading"><h2 id="recovery-photos-title">Dépannage et transport en images</h2></header>
       <div className="gallery-grid">{recoveryPhotos.map(([name, alt]) => <div className="gallery-image" key={name}>
-        <Visual name={"client/" + name} alt={alt}/>
+        <Visual name={"client/resized/" + name} alt={alt}/>
       </div>)}</div>
     </div></section>}
     {!scrapRemoval && <PageExtras slug={page.slug}/>}

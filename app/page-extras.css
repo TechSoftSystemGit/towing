@@ -21,8 +21,7 @@
 .extras-photo-copy h2 { max-width: 22ch; }
 .extras-photo-copy p { max-width: 52ch; margin: .8rem 0 0; color: var(--extra-body); }
 .extras-image { position: relative; isolation: isolate; aspect-ratio: 16 / 10; max-height: var(--inner-image-max); overflow: hidden; background: var(--extra-panel); border-radius: .8rem; }
-.extras-image img { object-fit: cover; }
-.extras-image[data-cutout] img { object-fit: contain; object-position: center bottom; padding: .75rem .75rem 0; }
+.extras-image img { object-fit: contain; }
 .extras-photo[data-photo-layout="reverse"] { background: var(--extra-panel); }
 [data-photo-layout="reverse"] .extras-photo-copy { grid-column: 2; grid-row: 1; }
 [data-photo-layout="reverse"] .extras-image { grid-column: 1; grid-row: 1; aspect-ratio: 4 / 3; }
@@ -31,6 +30,24 @@
 [data-photo-layout="banner"] .extras-image::after { position: absolute; inset: 0; content: ""; background: linear-gradient(0deg, rgb(24 24 27 / 97%), rgb(24 24 27 / 60%) 47%, transparent 83%); }
 [data-photo-layout="banner"] .extras-photo-copy { --heading-color: var(--bg-primary); padding: clamp(1rem, 4vw, 3rem); }
 [data-photo-layout="banner"] .extras-photo-copy p { color: var(--bg-primary); }
+.home-towing-banner[data-photo-layout="banner"] .extras-photo-inner { min-height: 0; }
+.home-towing-banner[data-photo-layout="banner"] .extras-image {
+  position: relative;
+  grid-area: 1 / 1;
+  aspect-ratio: 3 / 2;
+  width: 100%;
+}
+.home-towing-banner[data-photo-layout="banner"] .extras-photo-copy { grid-area: 1 / 1; }
+@media (max-width: 600px) {
+  .home-towing-banner[data-photo-layout="banner"] .extras-image { border-radius: .8rem .8rem 0 0; }
+  .home-towing-banner[data-photo-layout="banner"] .extras-image::after { display: none; }
+  .home-towing-banner[data-photo-layout="banner"] .extras-photo-copy {
+    grid-area: 2 / 1;
+    background: var(--bg-dark);
+    border-radius: 0 0 .8rem .8rem;
+  }
+  .home-towing-banner[data-photo-layout="banner"] .extras-photo-inner { gap: 0; }
+}
 [data-photo-layout="framed"] .extras-photo-inner { border: 1px solid var(--border-subtle); border-radius: 1rem; padding: clamp(1rem, 3vw, 2.2rem); background: var(--extra-panel); grid-template-columns: minmax(0, 1fr) minmax(0, .85fr); }
 [data-photo-layout="framed"] .extras-image { aspect-ratio: 4 / 3; border: 1px solid var(--border-subtle); }
 [data-photo-layout="inset"] .extras-photo-inner { grid-template-columns: minmax(0, .72fr) minmax(0, 1fr); gap: 0; }

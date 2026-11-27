@@ -4,12 +4,12 @@ import type { CSSProperties } from "react";
 import "./service-marquee.css";
 
 const services = [
-  { image: "hero-tow-truck-preview", title: "Remorquage à Créteil", detail: "Assistance téléphonique 24h/24" },
-  { image: "service-carburant-preview", title: "Erreur de carburant", detail: "Assistance pour véhicule immobilisé" },
-  { image: "service-engins-preview", title: "Transport d’engins", detail: "Enlèvement et livraison sur devis" },
-  { image: "services/stock-12216205", title: "Assistance pneus", detail: "Aide avec une roue de secours" },
-  { image: "services/stock-9606977", title: "Dépannage moto", detail: "Une moto immobilisée après une panne" },
-  { image: "services/stock-12203657", title: "Remorquage poids lourd", detail: "Remorquage dans le 94" },
+  { image: "client/resized/service-remorquage", title: "Remorquage à Créteil", detail: "Assistance téléphonique 24h/24" },
+  { image: "client/resized/service-erreur-carburant", title: "Erreur de carburant", detail: "Assistance pour véhicule immobilisé" },
+  { image: "client/resized/service-engins-chantier", title: "Transport d’engins", detail: "Enlèvement et livraison sur devis" },
+  { image: "client/resized/service-pneu", title: "Assistance pneus", detail: "Aide avec une roue de secours" },
+  { image: "client/resized/moto-sur-plateau", title: "Dépannage moto", detail: "Une moto immobilisée après une panne" },
+  { image: "client/resized/camion-frigorifique", title: "Remorquage poids lourd", detail: "Remorquage dans le 94" },
 ];
 
 export default function ServiceMarquee() {
@@ -22,7 +22,7 @@ export default function ServiceMarquee() {
     <div className="marquee-window">
       <ul className="marquee-list" style={{ "--marquee-count": services.length } as CSSProperties}>
         {services.map(({ image, title, detail }, index) => <li key={image} style={{ "--marquee-position": services.length - 1 - index } as CSSProperties}>
-          <Image src={`/images/${image}.webp`} alt="" width={72} height={52}/>
+          <Image src={`/images/${image}.webp`} alt="" width={72} height={48}/>
           <div><strong>{title}</strong><span>{detail}</span></div>
         </li>)}
       </ul>

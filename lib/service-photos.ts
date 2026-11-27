@@ -81,49 +81,6 @@ export const informationHeroPhotos: Record<string, ServiceStockPhoto> = {
   "not-found": editorial(3289479),
 };
 
-export const informationDetailPhotos: Partial<Record<string, ServiceStockPhoto>> = {
-  home: unsplash("depanneuse-en-stationnement", "Dépanneuse à plateau stationnée en extérieur", "rTuGrnWguR4"),
-  "a-propos": editorial(13821194),
-  blog: editorial(7564866),
-  contact: editorial(10039320),
-  "depannage-remorquage": editorial(7541987),
-  "zones-intervention": editorial(37032318),
-  "politique-confidentialite": editorial(12729860),
-};
-
-export const contactFormPhoto = editorial(31306158);
-
-export const footerPhotos: Readonly<Record<string, ServiceStockPhoto>> = {
-  home: unsplash("depanneuse-rouge", "Dépanneuse rouge stationnée en extérieur", "q6nx3xFYw3E"),
-  "not-found": editorial(5566441),
-  "a-propos": editorial(8985519),
-  blog: editorial(33559644),
-  contact: editorial(15422252),
-  "depannage-batterie": editorial(8470250),
-  "depannage-creteil": editorial(3807277),
-  "depannage-moto": editorial(8550645),
-  "depannage-pneu-creve": editorial(8986133),
-  "depannage-poids-lourd": editorial(7019378),
-  "depannage-remorquage": editorial(27665740),
-  "depannage-utilitaire": editorial(13605035),
-  "depannage-val-de-marne-94": editorial(8478239),
-  "depannage-voiture": editorial(12555009),
-  "enlevement-epave-gratuit": recovery,
-  "erreur-carburant": editorial(28641279),
-  faq: editorial(33036006),
-  "mentions-legales": editorial(20821358),
-  "politique-confidentialite": editorial(5025644),
-  "remorquage-creteil": unsplash("depanneuse-en-service", "Camion de dépannage équipé pour le remorquage", "qlx6GLKvgHw"),
-  "remorquage-moto": editorial(12095444),
-  "remorquage-poids-lourd": editorial(28158703),
-  "remorquage-utilitaire": editorial(20784463),
-  "remorquage-val-de-marne-94": editorial(10359129),
-  "remorquage-voiture": editorial(11653455),
-  "transport-engins-chantier": editorial(20296265),
-  "transport-vehicule-longue-distance": editorial(38927007),
-  "zones-intervention": editorial(14971465),
-};
-
 export function servicePhotoSrc(photo: ServiceStockPhoto) {
   return "/images/services/" + photo.file + ".webp";
 }

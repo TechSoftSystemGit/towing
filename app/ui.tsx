@@ -3,7 +3,7 @@ import { join } from "node:path";
 import Image from "next/image";
 import { BatteryCharging, BookOpen, Building2, ChevronDown, CircleDot, CircleHelp, Clock3, ClipboardList, Mail, MapPin, Menu, MessageCircle, Phone, Route, Truck, Wrench } from "lucide-react";
 import { business } from "../lib/business";
-import { type ServiceStockPhoto, servicePhotoSrc } from "../lib/service-photos";
+import { clientPhotos } from "../lib/client-photos";
 import LanguageMenu from "./language-menu";
 import ServicesMenu from "./services-menu";
 import ThemeToggle from "./theme-toggle";
@@ -30,7 +30,7 @@ export function Brand({ priority = false }: { priority?: boolean }) {
   const official = media("logo-alf.webp");
   return <a className={"brand " + (official ? "brand-official" : "brand-crest")} href="/" aria-label={business.name}>
     {official
-      ? <Image width={1024} height={1024} src="/images/logo-alf.webp" alt="" sizes="(max-width: 760px) 52px, 92px" preload={priority}/>
+      ? <Image width={500} height={500} src="/images/logo-alf.webp" alt="" unoptimized preload={priority}/>
       : <><Image width={447} height={480} src="/images/logo-alf-crest.webp" alt="" sizes="(max-width: 760px) 54px, 92px" preload={priority}/><span>DÉPANNAGE<br/>REMORQUAGE</span></>}
   </a>;
 }
@@ -71,7 +71,8 @@ function FloatingChannel({ href, kind }: { href: string; kind: "whatsapp" | "ema
       <div className="floating-channel-panel"><p>{whatsApp ? "WhatsApp est indisponible pour le moment." : "Le contact par e-mail est indisponible pour le moment."}</p><a href={business.tel}>Appeler ALF</a></div>
     </details>;
 }
-export function Footer({ photo }: { photo: ServiceStockPhoto }) {
+export function Footer() {
+  const photo = clientPhotos.fleet;
   const serviceLinks = [
     { slug: "depannage-remorquage", label: "Tous les services", Icon: Wrench },
     { slug: "depannage-creteil", label: "Dépannage à Créteil", Icon: MapPin },
@@ -98,7 +99,7 @@ export function Footer({ photo }: { photo: ServiceStockPhoto }) {
         <Actions/>
       </div>
       <figure className="footer-feature-photo">
-        <Image src={servicePhotoSrc(photo)} alt={photo.alt} fill sizes="(max-width: 760px) 100vw, 42vw"/>
+        <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 760px) 100vw, 42vw"/>
       </figure>
     </section>
     <div className="wrap footer">

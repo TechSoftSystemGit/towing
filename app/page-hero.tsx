@@ -19,14 +19,11 @@ export default function PageHero({ slug, officialName, officialAlt, children }: 
   const owner = officialName && sharedHeroOwners.get(officialName);
   const official = officialName && (!owner || owner === slug) && media(officialName + ".webp");
   const src = official ? "/images/" + officialName + ".webp" : servicePhotoSrc(photo);
-  const clientPhoto = src.startsWith("/images/client/");
 
-  return <section className="page-hero" data-client-photo={clientPhoto || undefined}>
+  return <section className="page-hero">
     <div className="wrap page-hero-inner">
       {children}
     </div>
-    <div className="page-hero-image">
-      <Image className="page-hero-backdrop" src={src} alt={official ? officialAlt || "" : photo.alt} fill preload sizes={clientPhoto ? "(max-width: 760px) 100vw, 50vw" : "100vw"}/>
-    </div>
+    <Image className="page-hero-backdrop" data-client-photo={src.startsWith("/images/client/") || undefined} src={src} alt={official ? officialAlt || "" : photo.alt} fill preload sizes="100vw"/>
   </section>;
 }
