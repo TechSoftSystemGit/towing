@@ -79,6 +79,7 @@ export function Footer({ photo }: { photo: ServiceStockPhoto }) {
     { slug: "depannage-batterie", label: "Dépannage batterie", Icon: BatteryCharging },
     { slug: "depannage-pneu-creve", label: "Dépannage pneu crevé", Icon: CircleDot },
     { slug: "transport-vehicule-longue-distance", label: "Transport longue distance", Icon: Route },
+    { slug: "enlevement-epave-gratuit", label: "Enlèvement d’épave gratuit", Icon: Truck },
   ];
   const usefulLinks = [
     { slug: "a-propos", label: "L’entreprise", Icon: Building2 },

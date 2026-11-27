@@ -47,6 +47,7 @@ const towingDirectory = [
   { slug: "remorquage-moto", title: "Remorquage moto", image: photoName(homePhotos.directory.motorcycle) },
   { slug: "transport-vehicule-longue-distance", title: "Transport longue distance", image: photoName(homePhotos.directory.longDistance) },
   { slug: "remorquage-poids-lourd", title: "Remorquage poids lourd", image: "service-poids-lourd-preview" },
+  { slug: "enlevement-epave-gratuit", title: "Enlèvement d’épave gratuit", image: "client/depanneuses-mercedes", description: "ALF enlève gratuitement les voitures dont vous souhaitez vous séparer, y compris les véhicules en fin de vie." },
 ];
 
 export default function Home() {

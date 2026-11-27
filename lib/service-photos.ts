@@ -128,6 +128,7 @@ export const footerPhotos: Readonly<Record<string, ServiceStockPhoto>> = {
   "depannage-utilitaire": editorial(13605035),
   "depannage-val-de-marne-94": editorial(8478239),
   "depannage-voiture": editorial(12555009),
+  "enlevement-epave-gratuit": recovery,
   "erreur-carburant": editorial(28641279),
   faq: editorial(33036006),
   "mentions-legales": editorial(20821358),

@@ -7,7 +7,19 @@ import ContactSection from "../contact-section";
 import PageExtras from "../page-extras";
 import PageFrame from "../page-frame";
 import PageHero from "../page-hero";
-import { Actions, Directory, Faq, FaqShowcase, link, Related } from "../ui";
+import { Actions, Directory, Faq, FaqShowcase, link, Related, Visual } from "../ui";
+
+const recoveryPhotos = [
+  ["berline-sur-plateau", "Berline blanche sur le plateau d’une dépanneuse jaune"],
+  ["moto-sur-plateau", "Moto noire arrimée sur un camion à plateau"],
+  ["camion-frigorifique", "Camion frigorifique chargé sur une dépanneuse jaune"],
+  ["porte-voitures-lohr", "Porte-voitures Lohr chargé sur une route bordée d’arbres"],
+  ["mercedes-glc", "Mercedes GLC noire chargée sur un plateau"],
+  ["depanneuses-mercedes", "Dépanneuses Mercedes jaune et blanche stationnées côte à côte"],
+  ["depannage-en-ville", "BMW blanche remorquée dans une rue résidentielle"],
+  ["depanneuses-en-parc", "Dépanneuses stationnées devant un bâtiment industriel"],
+  ["porte-voitures-rue", "Camion porte-voitures stationné dans une rue"],
+];
 
 type Props = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
@@ -20,6 +32,7 @@ export async function generateMetadata(props: Props) { return meta(await getPage
 export default async function Detail(props: Props) {
   const page = await getPage(props);
   const service = services.includes(page);
+  const scrapRemoval = page.slug === "enlevement-epave-gratuit";
   return <PageFrame slug={page.slug}>
     <Schema page={page}/>
     <PageHero slug={page.slug} officialName={page.image} officialAlt={page.alt}>
@@ -39,6 +52,12 @@ export default async function Detail(props: Props) {
       {page.faq && <Faq items={page.faq}/>}
       <a className="text-link" href={link(page.slug === "contact" ? "depannage-remorquage" : "contact")}>{page.slug === "contact" ? "Consulter les services" : "Contacter ALF"}</a>
     </div>}
-    <PageExtras slug={page.slug}/>
+    {page.slug === "depannage-remorquage" && <section className="service-gallery" aria-labelledby="recovery-photos-title"><div className="wrap section">
+      <header className="gallery-heading"><h2 id="recovery-photos-title">Dépannage et transport en images</h2></header>
+      <div className="gallery-grid">{recoveryPhotos.map(([name, alt]) => <div className="gallery-image" key={name}>
+        <Visual name={"client/" + name} alt={alt}/>
+      </div>)}</div>
+    </div></section>}
+    {!scrapRemoval && <PageExtras slug={page.slug}/>}
   </PageFrame>;
 }

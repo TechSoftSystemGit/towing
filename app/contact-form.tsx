@@ -12,7 +12,7 @@ const fields: Field[] = [
   { id: "name", label: "Nom complet", type: "text", autoComplete: "name", placeholder: "Votre nom", required: true },
   { id: "phone", label: "Téléphone", type: "tel", autoComplete: "tel", placeholder: "Votre numéro", required: true },
   { id: "location", label: "Adresse ou position actuelle", type: "text", placeholder: "Rue, commune ou repère", required: true },
-  { id: "problem", label: "Service ou problème", options: ["Panne", "Remorquage", "Batterie", "Pneu", "Erreur de carburant", "Transport", "Autre"], required: true },
+  { id: "problem", label: "Service ou problème", options: ["Panne", "Remorquage", "Batterie", "Pneu", "Erreur de carburant", "Transport", "Enlèvement d’épave gratuit", "Autre"], required: true },
   { id: "vehicleDetails", label: "Marque, modèle et année", type: "text", placeholder: "Ex. Renault Clio, 2019" },
   { id: "vehicleCondition", label: "État du véhicule", options: ["Roulant", "Non roulant", "Impossible à déterminer"] },
   { id: "vehicle", label: "Type de véhicule", options: ["Voiture", "Moto", "Utilitaire", "Poids lourd", "Engin", "Autre"], required: true },
