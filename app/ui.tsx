@@ -122,7 +122,13 @@ export function Footer({ photo }: { photo: ServiceStockPhoto }) {
         {business.whatsapp && <a href={business.whatsapp}><WhatsAppIcon/><span>WhatsApp</span></a>}
       </div>
     </div>
-    <div className="wrap footer-bottom"><span>{business.name}</span><nav aria-label="Informations légales"><a href="/mentions-legales/">Mentions légales</a><a href="/politique-confidentialite/">Confidentialité</a></nav></div>
+    <div className="wrap footer-bottom">
+      <div className="footer-signature">
+        <span>© {business.name}</span>
+        <span>Developed by <a href="https://techsoftsystem.com/">TechSoftSystem</a></span>
+      </div>
+      <nav aria-label="Informations légales"><a href="/mentions-legales/">Mentions légales</a><a href="/politique-confidentialite/">Confidentialité</a></nav>
+    </div>
   </footer><nav className="floating-contact" aria-label="Raccourcis de contact">
     <FloatingChannel kind="whatsapp" href={business.whatsapp}/>
     <a className="floating-phone" href={business.tel} aria-label="Appeler ALF" title="Appeler ALF"><Phone aria-hidden="true"/><span>Appeler</span></a>

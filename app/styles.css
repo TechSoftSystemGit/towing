@@ -331,6 +331,8 @@ footer { background: var(--bg-dark); color: var(--bg-secondary); }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .65rem 1.25rem; border-top: 1px solid var(--text-muted); padding-block: .8rem; font-size: .9rem; }
 .footer-bottom nav { display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
 .footer-bottom a { display: inline-grid; align-items: center; min-height: 44px; }
+.footer-signature { display: grid; }
+.footer-signature a { color: var(--brand-red-light); font-weight: 800; }
 .page-hero { position: relative; isolation: isolate; background: var(--bg-dark); color: var(--bg-primary); --heading-color: var(--bg-primary); }
 .page-hero-backdrop { z-index: -2; object-fit: cover; object-position: center; }
 .page-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, rgb(24 24 27 / 96%), rgb(24 24 27 / 86%) 45%, rgb(24 24 27 / 70%) 72%, rgb(24 24 27 / 24%)); }
